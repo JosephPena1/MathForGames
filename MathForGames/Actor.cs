@@ -35,7 +35,7 @@ namespace MathForGames
 
             set
             {
-               _velocity = value;
+                _velocity = value;
             }
         }
 
@@ -58,8 +58,6 @@ namespace MathForGames
             _position.Y += _velocity.Y;
             _position.X = Math.Clamp(_position.X, 0, Console.WindowWidth - 1);
             _position.Y = Math.Clamp(_position.Y, 0, Console.WindowHeight - 1);
-
-
         }
 
         public virtual void Draw()

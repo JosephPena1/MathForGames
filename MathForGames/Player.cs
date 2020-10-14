@@ -6,10 +6,16 @@ namespace MathForGames
 {
     class Player : Actor
     {
-        public Player(float x, float y, char icon = ' ', ConsoleColor color = ConsoleColor.White) 
-            : base(x,y,icon,color)
+        public Player(float x, float y, char icon = ' ', ConsoleColor color = ConsoleColor.White)
+            : base(x, y, icon, color)
         {
 
+        }
+
+        //should call MoveBall function in Ball class
+        public void HitBall()
+        {
+            
         }
 
         public override void Update()

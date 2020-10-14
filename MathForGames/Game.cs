@@ -35,10 +35,26 @@ namespace MathForGames
         public void Start()
         {
             _scene = new Scene();
-            Actor actor = new Actor(0, 0, 'Ω', ConsoleColor.Green);
-            actor.Velocity.X = 1;
-            Player player = new Player(1, 0, '∞', ConsoleColor.Red);
-            _scene.AddActor(actor);
+
+            GolfBall ball = new GolfBall(10, 0, '∙', ConsoleColor.White);
+            ball.Velocity.Y = 1;
+
+            Actor hole = new Actor(10, 15, 'P', ConsoleColor.Red);
+
+            //Actor actor = new Actor(0, 0, 'Ω', ConsoleColor.Green);
+            //actor.Velocity.X = 1;
+
+            Player player = new Player(1, 0, '@', ConsoleColor.Red);
+
+            if (ball.Position.X == hole.Position.X & ball.Position.Y == hole.Position.Y)
+            {
+                ball.Velocity.Y = 0;
+                ball.Velocity.X = 0;
+                Game.SetGameOver(true);
+            }
+
+            _scene.AddActor(hole);
+            _scene.AddActor(ball);
             _scene.AddActor(player);
         }
 
@@ -66,7 +82,7 @@ namespace MathForGames
         {
             Start();
 
-            while(!_gameOver)
+            while (!_gameOver)
             {
                 Console.CursorVisible = false;
                 Update();
