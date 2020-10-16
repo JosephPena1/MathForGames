@@ -45,5 +45,19 @@ namespace MathLibrary
             _y = y;
         }
 
+        public static Vector2 operator +(Vector2 lhs, Vector2 rhs)
+        {
+            return new Vector2(lhs.X + rhs.X, lhs.Y + rhs.Y);
+        }
+
+        public static Vector2 operator *(Vector2 lhs, float scalar)
+        {
+            return new Vector2(lhs.X * scalar, lhs.Y * scalar);
+        }
+
+        public float GetMagnitude()
+        {
+            return (float)Math.Sqrt(X * X + Y * Y);
+        }
     }
 }

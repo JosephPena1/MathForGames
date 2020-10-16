@@ -12,12 +12,6 @@ namespace MathForGames
 
         }
 
-        //should call MoveBall function in Ball class
-        public void HitBall()
-        {
-            
-        }
-
         public override void Update()
         {
             ConsoleKey keyPressed = Game.GetNextKey();

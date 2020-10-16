@@ -12,12 +12,6 @@ namespace MathForGames
 
         }
 
-        //
-        public void MoveBall()
-        {
-
-        }
-
         public override void Update()
         {
             _position.X += _velocity.X;
