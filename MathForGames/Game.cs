@@ -14,9 +14,22 @@ namespace MathForGames
         private static Scene[] _scenes;
         private static int _currentSceneIndex;
 
+        public static int CurrentSceneIndex
+        {
+            get
+            {
+                return _currentSceneIndex;
+            }
+        }
+
         public static Scene GetScene(int index)
         {
             return _scenes[index];
+        }
+
+        public static Scene GetCurrentScene()
+        {
+            return _scenes[_currentSceneIndex];
         }
 
         public static int AddScene(Scene scene)
@@ -104,7 +117,7 @@ namespace MathForGames
         public void Start()
         {
             //creates a new window for raylib
-            Raylib.InitWindow(1024, 820, "Math Fer Games");
+            Raylib.InitWindow(1024, 760, "Math Fer Games");
             Raylib.SetTargetFPS(60);
 
             //set up console window
@@ -114,16 +127,22 @@ namespace MathForGames
             Scene scene1 = new Scene();
             Scene scene2 = new Scene();
 
-            GolfBall ball = new GolfBall(1, 0, '∙', ConsoleColor.White);
-            ball.Velocity.X = 1;
-            Actor hole = new Actor(60, 0, Color.RED, 'P', ConsoleColor.Red);
-            Player player = new Player(1, 0, Color.WHITE,'@', ConsoleColor.Red);
+
+            Actor hole = new Actor(2, 0, Color.GRAY, 'P', ConsoleColor.Gray);
+            hole.Velocity.X += 1;
+
+            Player player = new Player(1, 0, Color.WHITE, '@', ConsoleColor.White);
+
+            Entity bob = new Entity(5, 5, Color.RED, 'E', ConsoleColor.Red);
+
+            Enemy enemy = new Enemy(1, 0, Color.BLUE, '@', ConsoleColor.Blue);
 
             scene1.AddActor(hole);
-            scene1.AddActor(ball);
+            scene1.AddActor(bob);
             scene1.AddActor(player);
 
             scene2.AddActor(player);
+            player.Speed = 5;
 
             int startingSceneIndex = 0;
 
@@ -134,12 +153,12 @@ namespace MathForGames
         }
 
         //Called every frame.
-        public void Update()
+        public void Update(float deltaTime)
         {
             if (!_scenes[_currentSceneIndex].Started)
                 _scenes[_currentSceneIndex].Start();
 
-            _scenes[_currentSceneIndex].Update();
+            _scenes[_currentSceneIndex].Update(deltaTime);
         }
 
         //Used to display objects and other info on the screen.
@@ -168,11 +187,11 @@ namespace MathForGames
 
             while (!_gameOver  && !Raylib.WindowShouldClose())
             {
-                Update();
+                float deltaTime = Raylib.GetFrameTime();
+                Update(deltaTime);
                 Draw();
                 while (Console.KeyAvailable)
                     Console.ReadKey(true);
-                Thread.Sleep(150);
             }
 
             End();
