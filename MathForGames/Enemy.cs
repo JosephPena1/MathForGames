@@ -47,14 +47,21 @@ namespace MathForGames
             return false;
         }
 
+        //make enemy move twoards player
         public override void Update(float deltaTime)
         {
+            Vector2 direction = Target.Position - Position;
+
             if (CheckTargetInSight(1.5f, 5))
             {
+                Velocity.X = direction.X;
+                Velocity.Y = direction.Y;
                 _rayColor = Color.YELLOW;
             }
             else
             {
+                Velocity.X = 0;
+                Velocity.Y = 0;
                 _rayColor = Color.BLUE;
             }
 

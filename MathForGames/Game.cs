@@ -144,7 +144,7 @@ namespace MathForGames
 
             enemy.Target = player;
             scene2.AddActor(player);
-            player.Speed = 5;
+            player.Speed = 10;
 
             int startingSceneIndex = 0;
 
