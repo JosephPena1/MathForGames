@@ -135,12 +135,14 @@ namespace MathForGames
 
             Entity bob = new Entity(5, 5, Color.RED, 'E', ConsoleColor.Red);
 
-            Enemy enemy = new Enemy(1, 0, Color.BLUE, '@', ConsoleColor.Blue);
+            Enemy enemy = new Enemy(10, 10, Color.BLUE, 'T', ConsoleColor.Blue);
 
             scene1.AddActor(hole);
             scene1.AddActor(bob);
+            scene1.AddActor(enemy);
             scene1.AddActor(player);
 
+            enemy.Target = player;
             scene2.AddActor(player);
             player.Speed = 5;
 
