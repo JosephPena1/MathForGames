@@ -35,9 +35,6 @@ namespace MathForGames
                 case 2:
                     xVelocity = -1;
                     break;
-            }
-            switch (movement)
-            {
                 case 3:
                     yVelocity = -1;
                     break;

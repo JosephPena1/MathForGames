@@ -122,7 +122,7 @@ namespace MathForGames
 
             //set up console window
             Console.CursorVisible = false;
-            Console.Title = "Math fer games";
+            Console.Title = "Math Fer Games";
 
             Scene scene1 = new Scene();
             Scene scene2 = new Scene();
@@ -144,7 +144,7 @@ namespace MathForGames
 
             enemy.Target = player;
             scene2.AddActor(player);
-            player.Speed = 10;
+            player.Speed = 7;
 
             int startingSceneIndex = 0;
 
