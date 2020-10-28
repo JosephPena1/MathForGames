@@ -116,6 +116,8 @@ namespace MathForGames
         //Called when the game begins. Use this for initialization.
         public void Start()
         {
+            Raylib.SetMouseScale(5, 5);
+            Raylib.SetMousePosition(0, 0);
             //creates a new window for raylib
             Raylib.InitWindow(1024, 760, "Math Fer Games");
             Raylib.SetTargetFPS(60);
@@ -144,7 +146,7 @@ namespace MathForGames
 
             enemy.Target = player;
             scene2.AddActor(player);
-            player.Speed = 7;
+            player.Speed = 1;
 
             int startingSceneIndex = 0;
 
